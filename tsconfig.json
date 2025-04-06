@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "rootDirs": ["src", "tests"],
+    "baseUrl": "src",
+    "sourceMap": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "outDir": "dist",
+    "module": "CommonJS",
+    "target": "ES2019",
+    "esModuleInterop": true,
+    "allowJs": true,
+    "strictNullChecks": false,
+    "noImplicitReturns": false,
+    "paths": {
+      "@/tests/*": ["../tests/*"],
+      "@/*": ["*"],
+    },
+    "forceConsistentCasingInFileNames": true,
+  },
+  "include": ["src", "tests"],
+  "exclude": []
+}
+

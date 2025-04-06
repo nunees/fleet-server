@@ -1,0 +1,56 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model UserRoles {
+  id        Int        @id @default(autoincrement())
+  name      String     @unique
+  createdAt DateTime   @default(now()) @map("created_at")
+  updatedAt DateTime?  @map("updated_at")
+  Accounts  Accounts[]
+
+  @@map("user_roles")
+}
+
+model Accounts {
+  id                String    @id @default(uuid())
+  firstName         String    @map("first_name")
+  lastName          String    @map("last_name")
+  username          String    @unique
+  email             String    @unique
+  roleId            Int       @map("role_id")
+  UserRole          UserRoles @relation(fields: [roleId], references: [id])
+  passwordHash      String    @map("password_hash")
+  isAccountVerified Boolean   @default(false) @map("is_account_verified")
+  isTermsAccepted   Boolean   @default(false) @map("is_terms_accepted")
+  isAccountLocked   Boolean   @default(false) @map("is_account_locked")
+  createdAt         DateTime  @default(now()) @map("created_at")
+  updatedAt         DateTime? @map("updated_at")
+  Tokens            Tokens[]
+
+  @@index([username, email])
+  @@map("accounts")
+}
+
+model Tokens {
+  id        String    @id @default(uuid())
+  accountId String    @map("account_id")
+  Account   Accounts  @relation(fields: [accountId], references: [id], onDelete: Cascade)
+  token     String    @unique
+  type      String?   @default("access")
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime? @map("updated_at")
+
+  @@map("tokens")
+}

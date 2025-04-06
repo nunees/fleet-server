@@ -1,0 +1,25 @@
+### Variables
+@apiurl = http://localhost:5050/api/v1
+
+### POST signup
+POST {{apiurl}}/signup HTTP/1.1
+Content-Type: application/json
+
+{
+    "firstName": "John",
+    "lastName": "Doe",
+    "username": "johndoe",
+    "roleId": 1,
+    "email": "johndoe@mail.com",
+    "password": "password123",
+    "passwordConfirmation": "password123"
+}
+
+### POST signin
+POST {{apiurl}}/signin HTTP/1.1
+Content-Type: application/json
+
+{
+    "email": "johndoe@mail.com",
+    "password": "password123"
+}
