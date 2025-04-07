@@ -1,0 +1,26 @@
+import { mockAddDriverParams } from '@/tests/domain/mocks/mock-driver'
+import { DbAddDriver } from '@/data/usecases/driver/db-add-driver'
+import { AddDriverRepositorySpy } from '@/tests/data/mocks/mock-db-driver'
+
+type SutTypes = {
+  sut: DbAddDriver
+  addDriverRepositorySpy: AddDriverRepositorySpy
+}
+
+const makeSut = (): SutTypes => {
+  const addDriverRepositorySpy = new AddDriverRepositorySpy()
+  const sut = new DbAddDriver(addDriverRepositorySpy)
+  return {
+    sut,
+    addDriverRepositorySpy,
+  }
+}
+
+describe('DbAddDriver Usecase', () => {
+  it('Should call AddDriverRepository with correct values', async () => {
+    const { sut, addDriverRepositorySpy } = makeSut()
+    const driverParams = mockAddDriverParams()
+    await sut.add(driverParams)
+    expect(addDriverRepositorySpy.driver).toEqual(driverParams)
+  })
+})
