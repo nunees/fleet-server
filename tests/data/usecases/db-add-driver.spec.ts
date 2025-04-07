@@ -75,4 +75,11 @@ describe('DbAddDriver Usecase', () => {
     const promise = sut.add(mockAddDriverParams())
     await expect(promise).rejects.toThrow()
   })
+
+  it('Should return false if CheckDriverByDocumentRepository returns true', async () => {
+    const { sut, checkDriverByDocumentRepositorySpy } = makeSut()
+    checkDriverByDocumentRepositorySpy.result = true
+    const result = await sut.add(mockAddDriverParams())
+    expect(result).toBe(false)
+  })
 })
