@@ -23,4 +23,13 @@ describe('DbAddDriver Usecase', () => {
     await sut.add(driverParams)
     expect(addDriverRepositorySpy.driver).toEqual(driverParams)
   })
+
+  it('Should throw if AddDriverRepository throws', async () => {
+    const { sut, addDriverRepositorySpy } = makeSut()
+    jest.spyOn(addDriverRepositorySpy, 'add').mockImplementationOnce(() => {
+      throw new Error()
+    })
+    const promise = sut.add(mockAddDriverParams())
+    await expect(promise).rejects.toThrow()
+  })
 })
