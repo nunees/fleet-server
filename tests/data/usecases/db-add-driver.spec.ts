@@ -64,4 +64,15 @@ describe('DbAddDriver Usecase', () => {
       driverParams.documentNumber,
     )
   })
+
+  it('Should throw if CheckDriverByDocumentRepository throws', async () => {
+    const { sut, checkDriverByDocumentRepositorySpy } = makeSut()
+    jest
+      .spyOn(checkDriverByDocumentRepositorySpy, 'checkByDocument')
+      .mockImplementationOnce(() => {
+        throw new Error()
+      })
+    const promise = sut.add(mockAddDriverParams())
+    await expect(promise).rejects.toThrow()
+  })
 })
