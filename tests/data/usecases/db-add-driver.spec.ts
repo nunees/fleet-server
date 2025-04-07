@@ -39,4 +39,10 @@ describe('DbAddDriver Usecase', () => {
     const result = await sut.add(mockAddDriverParams())
     expect(result).toBe(false)
   })
+
+  it('Should return true if AddDriverRepository returns true', async () => {
+    const { sut } = makeSut()
+    const result = await sut.add(mockAddDriverParams())
+    expect(result).toBe(true)
+  })
 })
