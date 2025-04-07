@@ -1,6 +1,6 @@
-import { AddAccount } from '@/domain/usecases/add-account'
+import { AddAccount } from '@/domain/usecases/account/add-account'
 import { faker } from '@faker-js/faker'
-import { Authentication } from '@/domain/usecases/authentication'
+import { Authentication } from '@/domain/usecases/account/authentication'
 
 export class AddAccountSpy implements AddAccount {
   params: AddAccount.Params

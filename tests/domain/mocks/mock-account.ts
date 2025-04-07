@@ -1,4 +1,4 @@
-import { AddAccount } from '@/domain/usecases/add-account'
+import { AddAccount } from '@/domain/usecases/account/add-account'
 import { faker } from '@faker-js/faker'
 
 export const mockAddAccountParams = (): AddAccount.Params => ({

@@ -1,5 +1,5 @@
 import { CheckAccountByEmailRepository } from '@/data/protocols/db/account/check-account-by-email-repository'
-import { CheckAccountByEmail } from '@/domain/usecases/check-account-by-email'
+import { CheckAccountByEmail } from '@/domain/usecases/account/check-account-by-email'
 
 export class DbCheckAccountByEmail implements CheckAccountByEmail {
   constructor(

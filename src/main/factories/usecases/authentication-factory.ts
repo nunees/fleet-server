@@ -1,5 +1,5 @@
 import { DbAuthentication } from '@/data/usecases/account/db-authentication'
-import { Authentication } from '@/domain/usecases/authentication'
+import { Authentication } from '@/domain/usecases/account/authentication'
 import { BcryptAdapter } from '@/infra/cryptography/bcrypt-adapter'
 import { JwtAdapter } from '@/infra/cryptography/jwt-dapter'
 import { PrismaService } from '@/infra/db/prisma/helpers/prisma-service'

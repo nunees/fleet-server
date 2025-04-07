@@ -1,0 +1,32 @@
+import { AddDriver } from '../usecases/driver/add-driver'
+import { faker } from '@faker-js/faker'
+
+export const mockAddDriverParams = (): AddDriver.Params => ({
+  firstName: faker.person.firstName(),
+  lastName: faker.person.lastName(),
+  birthDate: faker.date.birthdate(),
+  gender: 'Male',
+  addressLine: faker.location.streetAddress(),
+  number: faker.location.buildingNumber(),
+  complement: faker.location.secondaryAddress(),
+  neighborhood: faker.location.direction(),
+  city: faker.location.city(),
+  state: faker.location.state(),
+  zipCode: faker.location.zipCode(),
+  email: faker.internet.email(),
+  phone: faker.phone.number(),
+  mobile: faker.phone.number(),
+  emergencyContact: faker.phone.number(),
+  emergencyContactName: faker.person.fullName(),
+  documentType: faker.number.int({ min: 1, max: 3 }),
+  documentNumber: faker.string.numeric(11),
+  documentIssueDate: faker.date.past(),
+  documentExpirationDate: faker.date.future(),
+  documentIssuingAuthority: faker.company.name(),
+  licenseNumber: faker.string.numeric(11),
+  licenseType: faker.string.alpha(3),
+  licenseIssueDate: faker.date.past(),
+  licenseExpirationDate: faker.date.future(),
+  licenseIssuingAuthority: faker.company.name(),
+  licenseCategory: faker.string.alpha(1),
+})

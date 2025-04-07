@@ -1,5 +1,5 @@
 import { CheckAccountByUsernameRepository } from '@/data/protocols/db/account/check-account-by-username-repository'
-import { CheckAccountByUsername } from '@/domain/usecases/check-account-by-username'
+import { CheckAccountByUsername } from '@/domain/usecases/account/check-account-by-username'
 
 export class DbCheckAccountByUsername implements CheckAccountByUsername {
   constructor(

@@ -1,5 +1,5 @@
 import { LoadAccountByUsernameRepository } from '@/data/protocols/db/account/load-account-by-username-repository'
-import { LoadAccountByUsername } from '@/domain/usecases/load-account-by-username'
+import { LoadAccountByUsername } from '@/domain/usecases/account/load-account-by-username'
 import { CheckAccountByEmailRepository } from '@/data/protocols/db/account/check-account-by-email-repository'
 
 export class DbLoadAccountByUsername implements LoadAccountByUsername {
